@@ -1,0 +1,7 @@
+<div id="alerts" ng-class="{ 'show' : happening.status !== 'not-submitted' }">
+	<div class="alert-container">
+		<div class="alert {{happening.status}}">
+			{{ happening.message }}
+		</div>
+	</div>
+</div>

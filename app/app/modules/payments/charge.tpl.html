@@ -1,0 +1,85 @@
+<div ng-include src="'site/header.tpl.html'"></div>
+
+<div class="container" ng-init="initTransaction()">
+	<div class="padded">
+		<header class="section-header">
+			<h1>Single Charge</h1>
+		</header>
+		<section class="body-content" ng-switch="state.status">
+			<section id="charge-form" ng-switch-default>
+				
+				<form name="oneTimeCharge">
+					<p>This charge is processed by {{ payments.provider }}.</p>
+					
+					<div class="row">
+						<input type="text" ng-class="{ 'has-data' : data.amount.length > 0 }" name="amount" ng-model="data.amount" required="required" />
+						<label for="amount">Transaction Amount</label>
+					</div>
+					<div class="row">
+						<input type="text" ng-class="{ 'has-data' : data.number.length > 0 }" name="number" ng-model="data.number" required="required" />
+						<label for="number">Card Number</label>
+					</div>
+					<div class="row">
+						<div class="split">
+							<input type="text" ng-class="{ 'has-data' : data.expYear.length > 0 }" name="expMonth" ng-model="data.expMonth" required="required" />
+							<label for="expMonth">Expiration Month</label>
+						</div>
+						<div class="split">
+							<input type="text" ng-class="{ 'has-data' : data.expYear.length > 0 }" name="expYear" ng-model="data.expYear" required="required" />
+							<label for="expYear">Expiration Year</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="split">
+							<input type="text" ng-class="{ 'has-data' : data.cvv.length > 0 }" name="cvv" ng-model="data.cvv" required="required" />
+							<label for="cvv">Card CVV</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="actions row">
+							<button type="button" ng-disabled="oneTimeCharge.$invalid" ng-click="makeOneTimeCharge(oneTimeCharge, data)">Process Payment</button>
+						</div>
+						<div class="centered">
+							<div class="row"><a href="/#!/payments/subscription">Try a subscription &raquo;</a></div>
+						</div>
+					</div>
+					
+				</form>
+				
+			</section>
+			
+			<section class="notice" ng-switch-when="charge-success">
+				<div class="success">
+					<p>Success! Your transaction has been processed successfully.</p>
+				</div>
+			</section>
+
+			<section class="notice" ng-switch-when="error">
+				<div class="error">
+					<p>Unfortunately, we are unable to process transactions at this time. Try again later.</p>
+				</div>
+			</section>
+
+			<section class="notice" ng-switch-when="charge-error">
+				<div class="error">
+					<p>Unfortunately, we are unable to process transactions at this time. Try again later.</p>
+				</div>
+			</section>
+
+			<section class="notice" ng-switch-when="no-connection">
+				<div class="error">
+					<p>We are having trouble connecting to the internet.  Try again later.</p>
+				</div>
+			</section>
+
+			
+			<p><a href="/#!/dashboard">Back to dashboard &raquo;</a></p>
+			<p ng-controller="authenticate"><a href ng-click="initLogout(true)">Logout &raquo;</a></p>
+			
+		</section>
+	</div>
+</div>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>
+
+<div ng-include src="'site/alerts.tpl.html'"></div>

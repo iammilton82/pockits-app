@@ -1,0 +1,54 @@
+<div ng-include src="'site/header.tpl.html'"></div>
+
+<div class="container" ng-init="initPaymentHistory()">
+	<div class="padded">
+		<header class="section-header">
+			<h1>My Payments</h1>
+		</header>
+		<section class="body-content" ng-switch="state.status">
+			
+			<section id="charge-form" ng-switch-when="success">
+				<div class="padded">
+					<table width="100%" class="table">
+						<tr>
+							<th>Transaction ID</th>
+							<th>Amount</th>
+							<th>Date</th>
+							<th>Status</th>
+							<td>#</td>
+						</tr>
+						<tr ng-repeat="payment in payments">
+							<td>{{ payment.transactionId }}</td>
+							<td>{{ payment.amount | currency: payment.symbol }}</td>
+							<td>{{ payment.dateCreated }}</td>
+							<td>{{ returnStatus(payment.status) }}</td>
+							<td><a href ng-click="refundTransaction(payment)">Issue Refund</a></td>
+						</tr>
+					</table>
+				</div>
+			</section>
+
+			<section class="notice" ng-switch-when="no-results">
+				<div class="warning">
+					<p>You have not made any purchases yet.</p>
+				</div>
+			</section>
+			
+			<section class="notice" ng-switch-when="error">
+				<div class="error">
+					<p>We are having trouble retrieving your payment history. Please try again later.</p>
+				</div>
+			</section>
+
+
+			<p><a href="/#!/dashboard">Back to dashboard &raquo;</a></p>
+			<p ng-controller="authenticate"><a href ng-click="initLogout(true)">Logout &raquo;</a></p>
+			
+			
+		</section>
+	</div>
+</div>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>
+
+<div ng-include src="'site/alerts.tpl.html'"></div>

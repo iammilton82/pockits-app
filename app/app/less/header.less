@@ -1,0 +1,36 @@
+header {
+	&#header {
+		display: block;
+		min-height: 100px;
+		border-bottom:1px solid #eee;
+	}
+	&#_header {
+		.clear();
+		padding: 1em;
+		#logo {
+			display: block;
+			width: 50px;
+			height: 50px;
+			overflow: hidden;
+			text-indent: 100%;
+			float: left;
+			background: transparent url(/assets/img/pockits-logo.svg) no-repeat center center;
+			background-size: 50px 50px;
+			@media screen and (min-width: @tablet-size){
+				height: 90px;
+				width: 90px;
+				background-size: 90px 90px;
+			}
+		}
+		#menu {
+			float: right;
+			overflow: hidden;
+			text-indent: 100%;
+			display: block;
+			width: 48px;
+			height: 50px;
+			background: transparent url(/assets/img/menu-lightblue.svg) no-repeat center center;
+			background-size: 36px 25px;
+		}
+	}
+}

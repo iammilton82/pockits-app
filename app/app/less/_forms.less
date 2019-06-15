@@ -1,0 +1,54 @@
+form {
+	.clear();
+	max-width: 475px;
+	margin:0 auto;
+	
+	input, select, button {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+	
+	select {
+		display: block;
+		width: 100%;
+		padding: .8em 1em .7em;
+		position: relative;
+		background: white url(../img/arrow-down.svg) no-repeat right .6em center;
+		background-size: 24px;
+		border: 1px solid @color-fieldborder;
+		.rounded(0);
+	}
+
+	.row {
+		.clear();
+		position: relative;
+		margin-bottom: 1em;
+		input[type="text"],
+		input[type="password"],
+		input[type="email"] {
+			display: block;
+			padding: 1.4em .8em .4em;
+			width: 100%;
+			position: relative;
+			border: 1px solid @color-fieldborder;
+			color: #555;
+			font-weight: 400;
+			+ label {
+				position: absolute;
+				top:1em;
+				left: 1.1em;
+				line-height: 1em;
+				.transition(@element: all, @duration:0.2s, @ease:ease-out);
+			}
+			&.ng-touched, &:focus, &.has-data {
+				+label {
+					font-size: .8em;
+					top: .6em;
+					left: 1.1em;
+					color: #888;
+				}
+			}
+		}
+	}
+}

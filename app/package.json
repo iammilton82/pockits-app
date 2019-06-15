@@ -1,0 +1,33 @@
+{
+  "name": "api-html-template",
+  "version": "1.0.0",
+  "description": "Base template for Web App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-html2js": "^0.3.8",
+    "grunt-ng-constant": "^2.0.1"
+  },
+  "dependencies": {
+    "angular": "1.7.8",
+    "angular-animate": "1.7.8",
+    "angular-cache": "^4.6.0",
+    "angular-cookies": "1.7.8",
+    "angular-loading-bar": "^0.9.0",
+    "angular-local-storage": "0.7.1",
+    "angular-messages": "1.7.8",
+    "angular-resource": "1.7.8",
+    "angular-route": "1.7.8",
+    "angulartics": "^1.4.0",
+    "angulartics-google-analytics": "^0.4.0",
+    "underscore": "^1.8.3"
+  }
+}

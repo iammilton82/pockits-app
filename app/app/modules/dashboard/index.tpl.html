@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="padded">
+		<header class="section-header">
+			<h1>Dashboard</h1>
+		</header>
+		<section class="body-content">
+
+			<p>Hi {{me.firstName}}, Welcome to your {{me.display}} dashboard!</p>
+			
+			<p><a href="/#!/payments/charge">Single Charge &raquo;</a></p>
+			<p><a href="/#!/payments/subscription">Subscribe to a Plan &raquo;</a></p>
+			<p><a href="/#!/payments/history">Payment History &raquo;</a></p>
+			
+			<p ng-controller="authenticate"><a href ng-click="initLogout(true)">Logout &raquo;</a></p>
+			
+		</section>
+	</div>
+</div>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>

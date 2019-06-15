@@ -1,0 +1,27 @@
+.actions {
+	text-align: center;
+	button, .button {
+		display: inline-block;
+		border:1px solid @color-link;
+		min-width: 200px;
+		color: white;
+		background-color: @color-link;
+		padding: .5em 2em;
+		.rounded(.2em);
+		font-size: .9em;
+		line-height: 1.8em;
+		text-transform: uppercase;		
+		.transition(@element: all, @duration:0.2s, @ease:ease-out);
+		cursor: pointer;
+		&:hover {
+			background-color: white;
+			border-color: @color-link;
+			color: @color-link;
+		}
+		&[disabled]{
+			background-color: @color-lightgray;
+			color:#888;
+			border-color:@color-gray;
+		}
+	}
+}

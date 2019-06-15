@@ -1,0 +1,13 @@
+<div class="container" ng-init="initLogout(false)">
+	<div class="padded">
+		<header class="section-header">
+			<h1>Session Expired</h1>
+		</header>
+		<section class="body-content">
+			<p>Looks like your session expired.</p>
+			<p><a href="/#!/login">Click to login again &raquo;</a></p>
+		</section>
+	</div>
+</div>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>

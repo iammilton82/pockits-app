@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html class="no-js" data-ng-app="app">
+<head>
+	<meta http-equiv="x-ua-compatible" content="IE=Edge,chrome=1"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="language" content="english" />
+	<link rel="stylesheet" href="https://use.typekit.net/aep2pcl.css">
+	<link rel="stylesheet" type="text/css" media="all" href="assets/css/styles.css?v=1" />
+	<meta ng-bind="title" name="title" content="Page Title" />
+	<title ng-bind="title">App Template Title</title>
+</head>
+<body id="page" class="{{bodyClass}}" role="application">
+
+
+	<div id="app-container">
+
+		<div id="app" data-ng-view="" autoscroll="true">
+
+		</div>
+
+	</div>
+
+	<script src="https://js.stripe.com/v2/"></script>
+	<script src="assets/js/app.js?v=1"></script>
+
+
+
+</body>
+</html>

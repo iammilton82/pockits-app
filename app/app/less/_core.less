@@ -1,0 +1,63 @@
+@fontName:						"proxima-soft", "helevetica neue", helvetica, sans-serif;
+@bodyFont:						300 16px/1.4em @fontName;
+@titleFont:						'Playfair Display', serif;
+@color-gold:					#cb9b2c;
+@color-lightgold:				#dfbb66;
+@color-fieldborder:				#DDDDDD;
+@color-gray:					#D8D5D5;
+@color-lightgray:				#9B9B9B;
+@color-pink:					#ff6490;
+@color-link:					#358ED7;
+@color-red:						#b10c29;
+@color-burgundy:				#6c001f;
+
+@mobile-size:					375px;
+@tablet-size:					768px;
+@desktop-size:					1024px;
+
+.row {
+	.clear();
+	.split {
+		.clear();
+		position: relative;
+		@media screen and (min-width: @tablet-size){
+			width: 50%;
+			float: left;
+		}
+		&.mobile {
+			@media screen and (max-width: @tablet-size){
+				float:left;
+				width: 50%;
+			}
+		}
+		&.hide-mobile {
+			display: none;
+			@media screen and (min-width: @tablet-size){
+				display: block;
+			}
+		}
+	}
+
+	.columns {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: stretch;
+		align-content: flex-start;
+		.column {
+			width: 100%;
+			flex-grow: 1;
+			.clear();
+			@media screen and (min-width: @tablet-size){
+				width: calc(100%/3);
+				margin: 0 auto;
+				float:left;
+				&.two-third {
+					width: calc(100%/2);
+				}
+			}
+		}
+	}
+
+
+}

@@ -1,0 +1,39 @@
+#_public {
+    #container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    #main {
+        padding-top: 7em;
+        width: 90%;
+        margin:0 auto;
+        text-align: center;
+        @media screen and (min-width: @tablet-size){
+            padding-top: 10em;
+            max-width: 75%;
+        }
+        @media screen and (min-width: @desktop-size){
+            padding-top: 12em;
+        }
+        h1 {
+            font-weight: 600;
+            @media screen and (min-width: @tablet-size){
+                font-size: 3em;
+                line-height: 1em;
+            }
+            @media screen and (min-width: @desktop-size){
+                font-size: 4em;
+            }
+        }
+        p {
+            @media screen and (min-width: @desktop-size){
+                font-size: 1.4em;
+                line-height: 1.2em;
+            }
+            &.gray-text {
+                color: @color-lightgray;
+            }
+        }
+    }
+}

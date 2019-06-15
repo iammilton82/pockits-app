@@ -1,0 +1,59 @@
+<div class="container" ng-init="initForm()">
+	<div class="padded">
+		<header class="section-header">
+			<h1>Register New Account</h1>
+		</header>
+		<section class="body-content">
+			<form name="newUserRegistration" ng-show="state.status === 'not-submitted'">
+				
+				<div class="row">
+					<p>Use the form below to register and create your new account.</p>
+					<div class="alerts row">
+						<p>{{state.message}}</p>
+					</div>
+				</div>
+				
+				<div class="row">
+					<input type="text" ng-class="{ 'has-data' : data.firstName.length > 0 }" name="firstName" ng-model="data.firstName" required="required" />
+					<label for="firstName">First Name</label>
+				</div>
+				<div class="row">
+					<input type="text" ng-class="{ 'has-data' : data.lastName.length > 0 }" name="lastName" ng-model="data.lastName" required="required" />
+					<label for="lastName">Last Name</label>
+				</div>
+				<div class="row">
+					<input type="email" ng-class="{ 'has-data' : data.email.length > 0 }" name="email" ng-model="data.email" required="required" />
+					<label for="email">Email Address</label>
+				</div>
+				<div class="row">
+					<input type="password" ng-class="{ 'has-data' : data.password.length > 0 }" name="password" ng-model="data.password" required="required" />
+					<label for="password">Password</label>
+				</div>
+				<div class="row">
+					<div class="actions row">
+						<button type="submit" ng-disabled="newUserRegistration.$invalid" ng-click="registerUser(data)">Register</button>
+					</div>
+					<div class="centered">
+						<div class="row"><a href="/#!/login">Login to your account &raquo;</a></div>
+					</div>
+				</div>
+			</form>
+			<section class="module form success" ng-show="state.status === 'success'">
+				<header><h1>Registration Success</h1></header>
+				<section>
+					<p>Your account has been created successfully.</p>
+					<p><a href="/#!/login">Click here to login to your account &raquo;</a></p>
+				</section>
+			</section>
+			<section class="module form error" ng-show="state.status === 'error'">
+				<header><h1>Try again later</h1></header>
+				<section>
+					<p>Looks like we had an error registering your account.  Try again later.</p>
+					<p><a href="/#!/">Return to the Homepage</a></p>
+				</section>
+			</section>
+		</section>
+	</div>
+</div>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>
