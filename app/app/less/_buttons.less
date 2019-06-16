@@ -2,26 +2,21 @@
 	text-align: center;
 	button, .button {
 		display: inline-block;
-		border:1px solid @color-link;
-		min-width: 200px;
+		border:1px solid @color-blue;
+		width: 100%;
 		color: white;
-		background-color: @color-link;
+		background-color: @color-blue;
 		padding: .5em 2em;
-		.rounded(.2em);
-		font-size: .9em;
-		line-height: 1.8em;
-		text-transform: uppercase;		
+		.rounded(8px);
+		font-size: 1.3em;
+		line-height: 1em;
+		font-weight: 400;
 		.transition(@element: all, @duration:0.2s, @ease:ease-out);
 		cursor: pointer;
 		&:hover {
 			background-color: white;
 			border-color: @color-link;
 			color: @color-link;
-		}
-		&[disabled]{
-			background-color: @color-lightgray;
-			color:#888;
-			border-color:@color-gray;
 		}
 	}
 }

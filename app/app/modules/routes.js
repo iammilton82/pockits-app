@@ -3,11 +3,11 @@
 // create the route provider
 angular.module('routes', []).config(function($routeProvider, $locationProvider){
 	$routeProvider.when("/", {
-		// controller: "authenticate",
-		templateUrl: "home/index.tpl.html",
-		title: "Homepage",
-		bodyClass: "homepage",
-		authRequired: false,
+		controller: "authenticate",
+		templateUrl: "users/login.tpl.html",
+		title: "Login",
+		bodyClass: "authentication",
+		authRequired: false
 	})
 	.when("/register", {
 		controller: "authenticate",

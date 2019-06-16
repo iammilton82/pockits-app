@@ -2,13 +2,13 @@ form {
 	.clear();
 	max-width: 475px;
 	margin:0 auto;
-	
+
 	input, select, button {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
 	}
-	
+
 	select {
 		display: block;
 		width: 100%;
@@ -28,10 +28,11 @@ form {
 		input[type="password"],
 		input[type="email"] {
 			display: block;
-			padding: 1.4em .8em .4em;
+			padding: .5em 0;
 			width: 100%;
 			position: relative;
-			border: 1px solid @color-fieldborder;
+			border: none;
+			border-bottom: 1px solid @color-fieldborder;
 			color: #555;
 			font-weight: 400;
 			+ label {
@@ -49,6 +50,9 @@ form {
 					color: #888;
 				}
 			}
+		}
+		.actions {
+			padding-top: 1em;
 		}
 	}
 }

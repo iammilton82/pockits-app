@@ -3110,89 +3110,95 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
     "<div class=\"loading\" ng-class=\"{'active' : state.status === 'loading'}\"></div>\n" +
     "");
   $templateCache.put("users/login.tpl.html",
-    "<div class=\"container\" ng-init=\"initForm()\">\n" +
-    "	<div class=\"padded\">\n" +
+    "<section id=\"authentication\">\n" +
+    "	<div id=\"credentials\" class=\"container\" ng-init=\"initForm()\">\n" +
     "		<header class=\"section-header\">\n" +
-    "			<h1>Account Login</h1>\n" +
+    "			<h1>Sign In</h1>\n" +
     "		</header>\n" +
     "		<section class=\"body-content\">\n" +
     "			<form name=\"accountLogin\" ng-show=\"state.status === 'not-submitted'\">\n" +
-    "				\n" +
+    "\n" +
     "				<div class=\"row\">\n" +
-    "					<p>Enter your email address and password to login</p>\n" +
-    "					<div class=\"alerts row\">\n" +
-    "						<p>{{state.message}}</p>\n" +
+    "					<input type=\"email\" ng-class=\"{ 'has-data' : data.email.length > 0 }\" name=\"email\" ng-model=\"data.email\" required=\"required\" placeholder=\"Email Address\" />\n" +
+    "					<div ng-messages=\"accountLogin.email.$error\" ng-show=\"accountLogin.email.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">Your email address is required</div>\n" +
+    "						<div ng-message=\"email\">Must be a valid email address</div>\n" +
     "					</div>\n" +
     "				</div>\n" +
-    "				\n" +
     "				<div class=\"row\">\n" +
-    "					<input type=\"email\" ng-class=\"{ 'has-data' : data.email.length > 0 }\" name=\"email\" ng-model=\"data.email\" required=\"required\" />\n" +
-    "					<label for=\"email\">Email Address</label>\n" +
-    "				</div>\n" +
-    "				<div class=\"row\">\n" +
-    "					<input type=\"password\" ng-class=\"{ 'has-data' : data.password.length > 0 }\" name=\"password\" ng-model=\"data.password\" required=\"required\" />\n" +
-    "					<label for=\"password\">Password</label>\n" +
+    "					<input type=\"password\" ng-class=\"{ 'has-data' : data.password.length > 0 }\" name=\"password\" ng-model=\"data.password\" ng-minlength=\"8\" required=\"required\" placeholder=\"Password\" />\n" +
+    "					<div ng-messages=\"accountLogin.password.$error\" ng-show=\"accountLogin.password.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">A password is required</div>\n" +
+    "						<div ng-message=\"minlength\">Your password must be at least 8 characteres</div>\n" +
+    "					</div>\n" +
     "				</div>\n" +
     "				<div class=\"row\">\n" +
     "					<div class=\"actions row\">\n" +
     "						<button type=\"submit\" ng-disabled=\"accountLogin.$invalid\" ng-click=\"loginUser(data)\">Login</button>\n" +
     "					</div>\n" +
     "					<div class=\"centered\">\n" +
-    "						<div class=\"row\"><a href=\"/#!/register\">Create new account &raquo;</a></div>\n" +
+    "						<div class=\"row\"><a href=\"/app/#!/register\">Sign Up &rsaquo;</a></div>\n" +
     "					</div>\n" +
     "				</div>\n" +
     "			</form>\n" +
+    "\n" +
     "			<section class=\"module form error\" ng-show=\"state.status === 'error'\">\n" +
     "				<header><h1>Try again later</h1></header>\n" +
     "				<section>\n" +
     "					<p>Looks like we had an error signing you into your account.  Try again later.</p>\n" +
-    "					<p><a href=\"/#!/\">Return to the Homepage</a></p>\n" +
+    "					<p><a href=\"/app/#!/\">Return to the Homepage</a></p>\n" +
     "				</section>\n" +
     "			</section>\n" +
+    "\n" +
     "		</section>\n" +
     "	</div>\n" +
-    "</div>\n" +
-    "\n" +
+    "</section>\n" +
     "<div class=\"loading\" ng-class=\"{'active' : state.status === 'loading'}\"></div>\n" +
     "");
   $templateCache.put("users/register.tpl.html",
-    "<div class=\"container\" ng-init=\"initForm()\">\n" +
-    "	<div class=\"padded\">\n" +
+    "<section id=\"authentication\">\n" +
+    "	<div id=\"credentials\" class=\"container\" ng-init=\"initForm()\">\n" +
     "		<header class=\"section-header\">\n" +
-    "			<h1>Register New Account</h1>\n" +
+    "			<h1>Create your account</h1>\n" +
+    "			<p>(It's super quick)</p>\n" +
     "		</header>\n" +
     "		<section class=\"body-content\">\n" +
     "			<form name=\"newUserRegistration\" ng-show=\"state.status === 'not-submitted'\">\n" +
-    "				\n" +
+    "\n" +
     "				<div class=\"row\">\n" +
-    "					<p>Use the form below to register and create your new account.</p>\n" +
-    "					<div class=\"alerts row\">\n" +
-    "						<p>{{state.message}}</p>\n" +
+    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.firstName.length > 0 }\" ng-minlength=\"2\" name=\"firstName\" ng-model=\"data.firstName\" required=\"required\" placeholder=\"First Name\" />\n" +
+    "					<div ng-messages=\"newUserRegistration.firstName.$error\" ng-show=\"newUserRegistration.firstName.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">Your first name is required</div>\n" +
+    "						<div ng-message=\"minlength\">You must enter at least 2 characters</div>\n" +
     "					</div>\n" +
     "				</div>\n" +
-    "				\n" +
     "				<div class=\"row\">\n" +
-    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.firstName.length > 0 }\" name=\"firstName\" ng-model=\"data.firstName\" required=\"required\" />\n" +
-    "					<label for=\"firstName\">First Name</label>\n" +
+    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.lastName.length > 0 }\" name=\"lastName\" ng-model=\"data.lastName\" ng-minlength=\"2\" required=\"required\" placeholder=\"Last Name\" />\n" +
+    "					<div ng-messages=\"newUserRegistration.lastName.$error\" ng-show=\"newUserRegistration.lastName.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">Your last name is required</div>\n" +
+    "						<div ng-message=\"minlength\">You must enter at least 2 characters</div>\n" +
+    "					</div>\n" +
     "				</div>\n" +
     "				<div class=\"row\">\n" +
-    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.lastName.length > 0 }\" name=\"lastName\" ng-model=\"data.lastName\" required=\"required\" />\n" +
-    "					<label for=\"lastName\">Last Name</label>\n" +
+    "					<input type=\"email\" ng-class=\"{ 'has-data' : data.email.length > 0 }\" name=\"email\" ng-model=\"data.email\" required=\"required\" placeholder=\"Email Address\" />\n" +
+    "					<div ng-messages=\"newUserRegistration.email.$error\" ng-show=\"newUserRegistration.email.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">Your email address is required</div>\n" +
+    "						<div ng-message=\"email\">Must be a valid email address</div>\n" +
+    "					</div>\n" +
     "				</div>\n" +
     "				<div class=\"row\">\n" +
-    "					<input type=\"email\" ng-class=\"{ 'has-data' : data.email.length > 0 }\" name=\"email\" ng-model=\"data.email\" required=\"required\" />\n" +
-    "					<label for=\"email\">Email Address</label>\n" +
-    "				</div>\n" +
-    "				<div class=\"row\">\n" +
-    "					<input type=\"password\" ng-class=\"{ 'has-data' : data.password.length > 0 }\" name=\"password\" ng-model=\"data.password\" required=\"required\" />\n" +
-    "					<label for=\"password\">Password</label>\n" +
+    "					<input type=\"password\" ng-class=\"{ 'has-data' : data.password.length > 0 }\" name=\"password\" ng-model=\"data.password\" ng-minlength=\"8\" required=\"required\" placeholder=\"Password\" />\n" +
+    "					<div ng-messages=\"newUserRegistration.password.$error\" ng-show=\"newUserRegistration.password.$touched\" role=\"alert\">\n" +
+    "						<div ng-message=\"required\">A password is required</div>\n" +
+    "						<div ng-message=\"minlength\">Your password must be at least 8 characteres</div>\n" +
+    "					</div>\n" +
     "				</div>\n" +
     "				<div class=\"row\">\n" +
     "					<div class=\"actions row\">\n" +
     "						<button type=\"submit\" ng-disabled=\"newUserRegistration.$invalid\" ng-click=\"registerUser(data)\">Register</button>\n" +
     "					</div>\n" +
     "					<div class=\"centered\">\n" +
-    "						<div class=\"row\"><a href=\"/#!/login\">Login to your account &raquo;</a></div>\n" +
+    "						<div class=\"row\"><a href=\"/app/#!/login\">Sign In &rsaquo;</a></div>\n" +
     "					</div>\n" +
     "				</div>\n" +
     "			</form>\n" +
@@ -3212,7 +3218,7 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
     "			</section>\n" +
     "		</section>\n" +
     "	</div>\n" +
-    "</div>\n" +
+    "</section>\n" +
     "\n" +
     "<div class=\"loading\" ng-class=\"{'active' : state.status === 'loading'}\"></div>\n" +
     "");
@@ -3230,11 +3236,11 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
 // create the route provider
 angular.module('routes', []).config(function($routeProvider, $locationProvider){
 	$routeProvider.when("/", {
-		// controller: "authenticate",
-		templateUrl: "home/index.tpl.html",
-		title: "Homepage",
-		bodyClass: "homepage",
-		authRequired: false,
+		controller: "authenticate",
+		templateUrl: "users/login.tpl.html",
+		title: "Login",
+		bodyClass: "authentication",
+		authRequired: false
 	})
 	.when("/register", {
 		controller: "authenticate",

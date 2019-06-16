@@ -1,40 +1,46 @@
-<div class="container" ng-init="initForm()">
-	<div class="padded">
+<section id="authentication">
+	<div id="credentials" class="container" ng-init="initForm()">
 		<header class="section-header">
-			<h1>Register New Account</h1>
+			<h1>Create your account</h1>
+			<p>(It's super quick)</p>
 		</header>
 		<section class="body-content">
 			<form name="newUserRegistration" ng-show="state.status === 'not-submitted'">
-				
+
 				<div class="row">
-					<p>Use the form below to register and create your new account.</p>
-					<div class="alerts row">
-						<p>{{state.message}}</p>
+					<input type="text" ng-class="{ 'has-data' : data.firstName.length > 0 }" ng-minlength="2" name="firstName" ng-model="data.firstName" required="required" placeholder="First Name" />
+					<div ng-messages="newUserRegistration.firstName.$error" ng-show="newUserRegistration.firstName.$touched" role="alert">
+						<div ng-message="required">Your first name is required</div>
+						<div ng-message="minlength">You must enter at least 2 characters</div>
 					</div>
 				</div>
-				
 				<div class="row">
-					<input type="text" ng-class="{ 'has-data' : data.firstName.length > 0 }" name="firstName" ng-model="data.firstName" required="required" />
-					<label for="firstName">First Name</label>
+					<input type="text" ng-class="{ 'has-data' : data.lastName.length > 0 }" name="lastName" ng-model="data.lastName" ng-minlength="2" required="required" placeholder="Last Name" />
+					<div ng-messages="newUserRegistration.lastName.$error" ng-show="newUserRegistration.lastName.$touched" role="alert">
+						<div ng-message="required">Your last name is required</div>
+						<div ng-message="minlength">You must enter at least 2 characters</div>
+					</div>
 				</div>
 				<div class="row">
-					<input type="text" ng-class="{ 'has-data' : data.lastName.length > 0 }" name="lastName" ng-model="data.lastName" required="required" />
-					<label for="lastName">Last Name</label>
+					<input type="email" ng-class="{ 'has-data' : data.email.length > 0 }" name="email" ng-model="data.email" required="required" placeholder="Email Address" />
+					<div ng-messages="newUserRegistration.email.$error" ng-show="newUserRegistration.email.$touched" role="alert">
+						<div ng-message="required">Your email address is required</div>
+						<div ng-message="email">Must be a valid email address</div>
+					</div>
 				</div>
 				<div class="row">
-					<input type="email" ng-class="{ 'has-data' : data.email.length > 0 }" name="email" ng-model="data.email" required="required" />
-					<label for="email">Email Address</label>
-				</div>
-				<div class="row">
-					<input type="password" ng-class="{ 'has-data' : data.password.length > 0 }" name="password" ng-model="data.password" required="required" />
-					<label for="password">Password</label>
+					<input type="password" ng-class="{ 'has-data' : data.password.length > 0 }" name="password" ng-model="data.password" ng-minlength="8" required="required" placeholder="Password" />
+					<div ng-messages="newUserRegistration.password.$error" ng-show="newUserRegistration.password.$touched" role="alert">
+						<div ng-message="required">A password is required</div>
+						<div ng-message="minlength">Your password must be at least 8 characteres</div>
+					</div>
 				</div>
 				<div class="row">
 					<div class="actions row">
 						<button type="submit" ng-disabled="newUserRegistration.$invalid" ng-click="registerUser(data)">Register</button>
 					</div>
 					<div class="centered">
-						<div class="row"><a href="/#!/login">Login to your account &raquo;</a></div>
+						<div class="row"><a href="/app/#!/login">Sign In &rsaquo;</a></div>
 					</div>
 				</div>
 			</form>
@@ -54,6 +60,6 @@
 			</section>
 		</section>
 	</div>
-</div>
+</section>
 
 <div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>
