@@ -1,0 +1,51 @@
+<section id="authentication">
+	<div id="credentials" class="container" ng-init="initForm()">
+		<header class="section-header">
+			<h1>Create your brand</h1>
+			<p>Add your company name, logo and details</p>
+		</header>
+		<section class="body-content">
+			<form name="newUserRegistration" ng-show="state.status === 'not-submitted'">
+				<input type="hidden" name="accountId" ng-model="data.accountId" />
+				<div class="row">
+					<input type="text" ng-class="{ 'has-data' : data.company.length > 0 }" name="company" ng-model="data.company" placeholder="Company Name" />
+				</div>
+				<div class="row">
+					<input type="text" ng-class="{ 'has-data' : data.address1.length > 0 }" name="address1" ng-model="data.address1" placeholder="Street Address" />
+				</div>
+				<div class="row">
+					<input type="text" ng-class="{ 'has-data' : data.city.length > 0 }" name="city" ng-model="data.city" placeholder="City" />
+				</div>
+				<div class="row">
+					<div class="split">
+						<input type="text" ng-class="{ 'has-data' : data.state.length > 0 }" name="state" ng-model="data.state" placeholder="State" />
+					</div>
+					<div class="split">
+						<input type="text" ng-class="{ 'has-data' : data.zip.length > 0 }" name="zip" ng-model="data.zip" ng-minlength="2" placeholder="Zip Code" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="actions row">
+						<button type="submit" ng-disabled="newUserRegistration.$invalid" ng-click="createBrand(data)">Submit</button>
+					</div>
+				</div>
+			</form>
+			<section class="module form success" ng-show="state.status === 'success'">
+				<header><h1>Registration Success</h1></header>
+				<section>
+					<p>Your account has been created successfully.</p>
+					<p><a href="/#!/login">Click here to login to your account &raquo;</a></p>
+				</section>
+			</section>
+			<section class="module form error" ng-show="state.status === 'error'">
+				<header><h1>Try again later</h1></header>
+				<section>
+					<p>Looks like we had an error registering your account.  Try again later.</p>
+					<p><a href="/#!/">Return to the Homepage</a></p>
+				</section>
+			</section>
+		</section>
+	</div>
+</section>
+
+<div class="loading" ng-class="{'active' : state.status === 'loading'}"></div>

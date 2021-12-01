@@ -9,9 +9,16 @@ angular.module('routes', []).config(function($routeProvider, $locationProvider){
 		bodyClass: "authentication",
 		authRequired: false
 	})
+	.when("/register/brand", {
+		controller: "authenticate",
+		templateUrl: "users/register-brand.tpl.html",
+		title: "Create Your Brand",
+		bodyClass: "authentication",
+		authRequired: false
+	})
 	.when("/register", {
 		controller: "authenticate",
-		templateUrl: "users/register.tpl.html",
+		templateUrl: "users/register-account.tpl.html",
 		title: "Register New User",
 		bodyClass: "authentication",
 		authRequired: false

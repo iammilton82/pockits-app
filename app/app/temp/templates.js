@@ -335,7 +335,7 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
     "						<button type=\"submit\" ng-disabled=\"accountLogin.$invalid\" ng-click=\"loginUser(data)\">Login</button>\n" +
     "					</div>\n" +
     "					<div class=\"centered\">\n" +
-    "						<div class=\"row\"><a href=\"/app/#!/register\">Sign Up &rsaquo;</a></div>\n" +
+    "						<div class=\"row\"><a href=\"/app/#!/register\">Sign In &rsaquo;</a></div>\n" +
     "					</div>\n" +
     "				</div>\n" +
     "			</form>\n" +
@@ -353,7 +353,7 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
     "</section>\n" +
     "<div class=\"loading\" ng-class=\"{'active' : state.status === 'loading'}\"></div>\n" +
     "");
-  $templateCache.put("users/register.tpl.html",
+  $templateCache.put("users/register-account.tpl.html",
     "<section id=\"authentication\">\n" +
     "	<div id=\"credentials\" class=\"container\" ng-init=\"initForm()\">\n" +
     "		<header class=\"section-header\">\n" +
@@ -396,7 +396,60 @@ angular.module('templates', []).run(['$templateCache', function ($templateCache)
     "						<button type=\"submit\" ng-disabled=\"newUserRegistration.$invalid\" ng-click=\"registerUser(data)\">Register</button>\n" +
     "					</div>\n" +
     "					<div class=\"centered\">\n" +
-    "						<div class=\"row\"><a href=\"/app/#!/login\">Sign In &rsaquo;</a></div>\n" +
+    "						<div class=\"row\"><a href=\"/app/#!/login\">Sign Up &rsaquo;</a></div>\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "			</form>\n" +
+    "			<section class=\"module form success\" ng-show=\"state.status === 'success'\">\n" +
+    "				<header><h1>Registration Success</h1></header>\n" +
+    "				<section>\n" +
+    "					<p>Your account has been created successfully.</p>\n" +
+    "					<p><a href=\"/#!/login\">Click here to login to your account &raquo;</a></p>\n" +
+    "				</section>\n" +
+    "			</section>\n" +
+    "			<section class=\"module form error\" ng-show=\"state.status === 'error'\">\n" +
+    "				<header><h1>Try again later</h1></header>\n" +
+    "				<section>\n" +
+    "					<p>Looks like we had an error registering your account.  Try again later.</p>\n" +
+    "					<p><a href=\"/#!/\">Return to the Homepage</a></p>\n" +
+    "				</section>\n" +
+    "			</section>\n" +
+    "		</section>\n" +
+    "	</div>\n" +
+    "</section>\n" +
+    "\n" +
+    "<div class=\"loading\" ng-class=\"{'active' : state.status === 'loading'}\"></div>\n" +
+    "");
+  $templateCache.put("users/register-brand.tpl.html",
+    "<section id=\"authentication\">\n" +
+    "	<div id=\"credentials\" class=\"container\" ng-init=\"initForm()\">\n" +
+    "		<header class=\"section-header\">\n" +
+    "			<h1>Create your brand</h1>\n" +
+    "			<p>Add your company name, logo and details</p>\n" +
+    "		</header>\n" +
+    "		<section class=\"body-content\">\n" +
+    "			<form name=\"newUserRegistration\" ng-show=\"state.status === 'not-submitted'\">\n" +
+    "				<input type=\"hidden\" name=\"accountId\" ng-model=\"data.accountId\" />\n" +
+    "				<div class=\"row\">\n" +
+    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.company.length > 0 }\" name=\"company\" ng-model=\"data.company\" placeholder=\"Company Name\" />\n" +
+    "				</div>\n" +
+    "				<div class=\"row\">\n" +
+    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.address1.length > 0 }\" name=\"address1\" ng-model=\"data.address1\" placeholder=\"Street Address\" />\n" +
+    "				</div>\n" +
+    "				<div class=\"row\">\n" +
+    "					<input type=\"text\" ng-class=\"{ 'has-data' : data.city.length > 0 }\" name=\"city\" ng-model=\"data.city\" placeholder=\"City\" />\n" +
+    "				</div>\n" +
+    "				<div class=\"row\">\n" +
+    "					<div class=\"split\">\n" +
+    "						<input type=\"text\" ng-class=\"{ 'has-data' : data.state.length > 0 }\" name=\"state\" ng-model=\"data.state\" placeholder=\"State\" />\n" +
+    "					</div>\n" +
+    "					<div class=\"split\">\n" +
+    "						<input type=\"text\" ng-class=\"{ 'has-data' : data.zip.length > 0 }\" name=\"zip\" ng-model=\"data.zip\" ng-minlength=\"2\" placeholder=\"Zip Code\" />\n" +
+    "					</div>\n" +
+    "				</div>\n" +
+    "				<div class=\"row\">\n" +
+    "					<div class=\"actions row\">\n" +
+    "						<button type=\"submit\" ng-disabled=\"newUserRegistration.$invalid\" ng-click=\"createBrand(data)\">Submit</button>\n" +
     "					</div>\n" +
     "				</div>\n" +
     "			</form>\n" +
